@@ -49,11 +49,11 @@ Running it will output:
 ## Example
 See the __example__ directory.  
 
-Compile and run each example with:  
+Compile and run it with:  
 ```bash
 mkdir -p build
 cd build
 cmake ../
 make
-./table
+./ansi_markup
 ```
