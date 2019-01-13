@@ -32,6 +32,12 @@
 
 namespace ansi_markup
 {
+    template<typename T>
+    std::string escape_code(T const value)
+    {
+        return "\033[" + std::to_string(static_cast<int>(value)) + "m";
+    };
+    
     enum class style
     {
         reset = 0,
@@ -48,7 +54,7 @@ namespace ansi_markup
 
     std::ostream &operator<<(std::ostream &os, style const rhs)
     {
-        return os << "\033[" << static_cast<int>(rhs) << "m";
+        return os << escape_code(rhs);
     }
 
     template<typename T>
@@ -84,7 +90,7 @@ namespace ansi_markup
 
     std::ostream &operator<<(std::ostream &os, fg const rhs)
     {
-        return os << "\033[" << static_cast<int>(rhs) << "m";
+        return os << escape_code(rhs);
     }
 
     std::string fg_black(std::string const &value) { return generate_markup(value, fg::black); }
@@ -120,7 +126,7 @@ namespace ansi_markup
 
     std::ostream &operator<<(std::ostream &os, bg const rhs)
     {
-        return os << "\033[" << static_cast<int>(rhs) << "m";
+        return os << escape_code(rhs);
     }
 
     std::string bg_black(std::string const &value) { return generate_markup(value, bg::black); }
@@ -146,7 +152,7 @@ namespace ansi_markup
 
     std::ostream &operator<<(std::ostream &os, fgB const rhs)
     {
-        return os << "\033[" << static_cast<int>(rhs) << "m";
+        return os << escape_code(rhs);
     }
 
     std::string fgB_black(std::string const &value) { return generate_markup(value, fgB::black); }
@@ -172,7 +178,7 @@ namespace ansi_markup
 
     std::ostream &operator<<(std::ostream &os, bgB const rhs)
     {
-        return os << "\033[" << static_cast<int>(rhs) << "m";
+        return os << escape_code(rhs);
     }
 
     std::string bgB_black(std::string const &value) { return generate_markup(value, bgB::black); }
